@@ -583,68 +583,7 @@
         }
 
 
-        /* Handshake Animation */
-        .handshake-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 50px 0;
-            height: 200px;
-            position: relative;
-        }
-
-        .handshake-arm {
-            position: absolute;
-            width: 80px;
-            height: 120px;
-            background-color: green;
-            border-radius: 40px;
-        }
-
-        .handshake-arm.left {
-            left: calc(50% - 60px);
-            transform-origin: right center;
-            animation: handshake-left 2s infinite;
-        }
-
-        .handshake-arm.right {
-            right: calc(50% - 60px);
-            transform-origin: left center;
-            animation: handshake-right 2s infinite;
-        }
-
-        .handshake-hand {
-            position: absolute;
-            width: 40px;
-            height: 50px;
-            background-color: green;
-            border-radius: 20px 20px 0 0;
-        }
-
-        .handshake-arm.left .handshake-hand {
-            right: -20px;
-            top: 30px;
-        }
-
-        .handshake-arm.right .handshake-hand {
-            left: -20px;
-            top: 30px;
-        }
-
-        @keyframes handshake-left {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(10deg); }
-            50% { transform: rotate(-5deg); }
-            75% { transform: rotate(5deg); }
-        }
-
-        @keyframes handshake-right {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-10deg); }
-            50% { transform: rotate(5deg); }
-            75% { transform: rotate(-5deg); }
-        }
-
+        
         /* Contact Prompt Modal */
         .contact-prompt {
             position: fixed;
@@ -1138,40 +1077,6 @@
     </div>
 </section>
 
-    <!-- Handshake Animation -->
-    <section class="section">
-        <div class="handshake-container">
-            <div class="handshake-arm left">
-                <div class="handshake-hand"></div>
-            </div>
-            <div class="handshake-arm right">
-                <div class="handshake-hand"></div>
-            </div>
-        </div>
-    </section>
-
-<section class="section" id="inspiration">
-        <div class="section-title">
-            <h2>Be Inspired</h2>
-            <p>Exploring Unique Working Solutions for Every Company</p>
-        </div>
-        <div class="inspiration-spotlight">
-            <div class="inspiration-image">
-                <img src="Vusi Thembekwayo.jpg" alt="Vusi Thembekwayo">
-                <div class="inspiration-quote">
-                    <i class="fas fa-quote-left"></i>
-                    <p>"It's not the size of the mountain, you just lack the courage to make the climb."</p>
-                    <p>"Vusi Thembekwayo"</p>
-                </div>
-            </div>
-            <div class="inspiration-text">
-            
-                <p> We believe every team has the potential to achieve greatness - they just need the right tools, training, and inspiration to make the climb.</p>
-                <p>Like scaling a mountain, team development requires preparation, the right equipment (our training programs), and expert guides (our facilitators). The journey may seem daunting at first, but with each step, your team will grow stronger and more capable.</p>
-                <p>At Anruf Sourcing, we provide the roadmap and support system to help your team conquer their business challenges and reach new heights of performance and collaboration.</p>
-
-    </section>
-
     <section class="section services" id="services">
         <div class="section-title light">
             <h2>Our Services</h2>
@@ -1280,7 +1185,30 @@
             </div>
         </div>
     </section>
+    
+<section class="section" id="inspiration">
+        <div class="section-title">
+            <h2>Be Inspired</h2>
+            <p>Exploring Unique Working Solutions for Every Company</p>
+        </div>
+        <div class="inspiration-spotlight">
+            <div class="inspiration-image">
+                <img src="Vusi Thembekwayo.jpg" alt="Vusi Thembekwayo">
+                <div class="inspiration-quote">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"It's not the size of the mountain, you just lack the courage to make the climb."</p>
+                    <p>"Vusi Thembekwayo"</p>
+                </div>
+            </div>
+            <div class="inspiration-text">
+            
+                <p> We believe every team has the potential to achieve greatness - they just need the right tools, training, and inspiration to make the climb.</p>
+                <p>Like scaling a mountain, team development requires preparation, the right equipment (our training programs), and expert guides (our facilitators). The journey may seem daunting at first, but with each step, your team will grow stronger and more capable.</p>
+                <p>At Anruf Sourcing, we provide the roadmap and support system to help your team conquer their business challenges and reach new heights of performance and collaboration.</p>
 
+    </section>
+
+   
     <!-- Contact Prompt Modal -->
     <div class="contact-prompt" id="contactPrompt">
         <div class="prompt-box">
@@ -1289,7 +1217,10 @@
             <p>Our team building specialists are ready to create a customized program for your organization. Contact us today to discuss your needs and get a personalized proposal.</p>
             <div class="prompt-btns">
                 <a href="tel:+256782029464" class="btn btn-primary">
-                    <i class="fas fa-phone-alt"></i> Call Now
+                    <i class="fas fa-phone-alt"></i> Call Now (+256782029464)
+                </a>
+                <a href="tel:+256744634895" class="btn btn-primary">
+                    <i class="fas fa-phone-alt"></i> Call Now (+256744634895)
                 </a>
                 <a href="mailto:info@anrufsourcing.com" class="btn btn-outline">
                     <i class="fas fa-envelope"></i> Email Us
@@ -1369,28 +1300,26 @@
         // Header scroll effect
         const header = document.getElementById('header');
         let scrollTimeout;
-window.addEventListener('scroll', () => {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-        // Header scroll effect
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-        
-        // Animate elements
-        animateOnScroll();
-    }, 100);
-});
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                // Header scroll effect
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                // Animate elements
+                animateOnScroll();
+            }, 100);
+        });
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                
                 if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
@@ -1399,7 +1328,7 @@ window.addEventListener('scroll', () => {
                 }
             });
         });
-        
+
         // Activities Slider
         const slider = document.getElementById('slider');
         const dots = document.querySelectorAll('.slider-dot');
@@ -1407,21 +1336,16 @@ window.addEventListener('scroll', () => {
         const slideCount = document.querySelectorAll('.slide').length;
         let slideInterval;
 
-        // Fixed slider auto-advance and dot navigation
-function showSlide(index) {
-    if (index < 0) index = slideCount - 1;
-    if (index >= slideCount) index = 0;
-    
-    currentSlide = index;
-    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-    
-    dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentSlide);
-    });
-    
-    // Reset animation timer when manually navigating
-    resetInterval();
-}
+        function showSlide(index) {
+            if (index < 0) index = slideCount - 1;
+            if (index >= slideCount) index = 0;
+            currentSlide = index;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
         // Dot navigation
         dots.forEach(dot => {
             dot.addEventListener('click', () => {
@@ -1429,9 +1353,8 @@ function showSlide(index) {
                 showSlide(slideIndex);
                 resetInterval();
             });
-        
+        });
 
-        // Auto slide
         function startInterval() {
             slideInterval = setInterval(() => {
                 showSlide(currentSlide + 1);
@@ -1449,7 +1372,6 @@ function showSlide(index) {
         slider.addEventListener('mouseenter', () => {
             clearInterval(slideInterval);
         });
-
         slider.addEventListener('mouseleave', () => {
             startInterval();
         });
@@ -1477,24 +1399,15 @@ function showSlide(index) {
             if (e.target === contactPrompt) {
                 contactPrompt.classList.remove('active');
                 document.body.style.overflow = 'auto';
-                const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Add form submission logic here
-        alert('Thank you for your message! We will contact you soon.');
-    });
-}
-            
+            }
+        });
 
         // Animate elements on scroll
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('.feature-card, .inspiration-spotlight, .service-card');
-            
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
                 const screenPosition = window.innerHeight / 1.2;
-                
                 if (elementPosition < screenPosition) {
                     element.style.opacity = '1';
                     element.style.transform = 'translateY(0)';
@@ -1511,12 +1424,6 @@ if (contactForm) {
 
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
-
-            }
-        });
-
-       
-        });
     </script>
 </body>
 </html>
