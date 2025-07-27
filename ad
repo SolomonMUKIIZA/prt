@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anruf Sourcing | Unrivaled Team Building</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: white;
+            --secondary: #ff6b6b;
+            --dark: yellow;
+            --light: #f8f9fa;
+            --accent: blue;
+            --text: white;
+            --text-light: white;
+        }
+
+        html {
+            font-size: 100%;
+            -webkit-text-size-adjust: 100%;
+            width: 100vw;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        body {
+            min-width: 320px;
+            background-color: blue;
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+            width: 100vw;
+            max-width: 100vw;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader.fade-out {
+            opacity: 0;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: darkgoldenrod;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            min-width: 320px;
+            padding: 15px 5%;
+            background: blue;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 5%;
+            background: blue;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
+            font-weight: 700;
+            color: yellow;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+            font-size: 1.3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: clamp(15px, 2vw, 30px);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+            padding: 8px 0;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: yellowgreen;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--dark);
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 4vw 40px 4vw;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            width: 100vw;
+            max-width: 100vw;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.1rem, 6vw, 3.2rem);
+            margin-bottom: 18px;
+            color: var(--dark);
+            line-height: 1.15;
+            word-break: break-word;
+        }
+
+        .hero h1 span {
+            color: green;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            margin-bottom: 14px;
+            color: var(--text-light);
+            word-break: break-word;
+        }
+
+        .hero-btns {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 32px;
+            width: 100%;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            white-space: nowrap;
+        }
+
+        .btn i {
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: mediumturquoise;
+            box-shadow: 0 10px 20px rgba(74, 107, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: maroon;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero-image {
+            position: relative;
+            margin-top: 40px;
+            max-height: 60vh;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            animation: fadeInRight 1s ease forwards 0.5s;
+            opacity: 0;
+            object-fit: contain;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Features Section */
+        .section {
+            padding: 80px 5%;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 55px;
+            height: 4px;
+            background: white;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: green;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .feature-card p {
+            color: white;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+
+        /* Team Building Activities Slider */
+        .activities {
+            background: linear-gradient(135deg, white 0%, white 100%);
+        }
+
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            max-height: 50vh;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+
+        .slide:hover .slide-content {
+            transform: translateY(0);
+        }
+
+        .slide-content h3 {
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            margin-bottom: 10px;
+        }
+
+        .slide-content p {
+            margin-bottom: 15px;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+
+        .slide-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .feature-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .slider-dot.active {
+            background: var(--primary);
+        }
+
+        .slider-arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .slider-arrow {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--dark);
+            transition: all 0.3s;
+        }
+
+        .slider-arrow:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .activities-cta {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .activities-cta p {
+            margin-bottom: 15px;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+        }
+
+        /* Inspiration Section */
+        .inspiration-spotlight {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            background: blue;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .inspiration-spotlight.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .inspiration-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .inspiration-image img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .inspiration-quote {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--primary);
+            color: blue;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 250px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateX(-150%);
+            opacity: 0;
+            animation: slideInRight 1s ease forwards 0.5s;
+        }
+
+        .inspiration-quote i {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 8px;
+        }
+
+        .inspiration-text {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .inspiration-text h3 {
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .inspiration-text p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+            font-size: clamp(0.9rem, 2vw, 0.95rem);
+        }
+
+        .inspiration-name {
+            font-weight: 700;
+            color: var(--dark);
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+
+        .inspiration-title {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .service-card {
+            background: green;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s, background 0.3s;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: white;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-card h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .service-card h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: white;
+            bottom: -8px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .service-card:hover h3::after {
+            width: 80px;
+        }
+
+        .service-card p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .service-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+            font-size: 0.8rem;
+        }
+
+        .service-link:hover {
+            transform: translateX(5px);
+        }
+
+        .service-link:hover i {
+            transform: translateX(3px);
+        }
+
+        /* Contact Prompt Modal */
+        .contact-prompt {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .contact-prompt.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .prompt-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transform: translateY(50px);
+            transition: transform 0.3s;
+        }
+
+        .contact-prompt.active .prompt-box {
+            transform: translateY(0);
+        }
+
+        .prompt-box h3 {
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .prompt-box p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .prompt-btns {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .close-prompt {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: color 0.3s;
+            background: none;
+            border: none;
+        }
+
+        .close-prompt:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: green;
+            padding: 50px 5% 25px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: green;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column p {
+            margin-bottom: 12px;
+            opacity: 0.8;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: green;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-links i {
+            font-size: 0.7rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, transform 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-150%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .hero {
+                flex-direction: row;
+                text-align: left;
+                padding-top: 80px;
+                align-items: center;
+                justify-content: center;
+            }
+            .hero-content {
+                margin: 0;
+                align-items: flex-start;
+                text-align: left;
+            }
+            .hero-btns {
+                justify-content: flex-start;
+            }
+            .hero-image {
+                position: static;
+                margin-top: 0;
+                margin-left: 40px;
+                max-width: 600px;
+                width: 45vw;
+                height: auto;
+                max-height: 70vh;
+                display: block;
+            }
+            .inspiration-spotlight {
+                flex-direction: row;
+            }
+            .inspiration-image {
+                width: 50%;
+            }
+            .inspiration-text {
+                padding: 50px;
+            }
+            .prompt-btns {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .slide img {
+                max-height: 500px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 60%;
+                height: 100%;
+                clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+                z-index: -1;
+            }
+            
+            .hero-image {
+                height: 90%;
+                max-height: 90vh;
+                max-width: 700px;
+            }
+            
+            .slider-arrows {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 30px;
+                transition: left 0.3s ease;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .nav-links li {
+                margin: 15px 0;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hero {
+                padding: 40px 1vw 10px 1vw;
+                min-height: 60vh;
+            }
+            .hero-content {
+                max-width: 99vw;
+                padding: 0 1vw;
+            }
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+            .hero-image {
+                width: 100%;
+                max-width: 98vw;
+                margin: 10px auto 0;
+                max-height: 28vh;
+            }
+            .section {
+                padding: 18px 1vw;
+            }
+            .features-grid {
+                gap: 7px;
+            }
+            .feature-card {
+                padding: 8px 4px;
+            }
+            .services-grid {
+                gap: 6px;
+            }
+            .service-card {
+                padding: 8px 4px;
+            }
+            .section-title h2 {
+                font-size: 0.95rem;
+            }
+            .section-title p {
+                font-size: 0.7rem;
+            }
+            .inspiration-quote {
+                max-width: 98vw;
+                left: 1vw;
+                font-size: 0.7rem;
+            }
+            .inspiration-text {
+                padding: 4px;
+            }
+            .activities-cta {
+                padding: 3px 0;
+            }
+            .slider-container {
+                border-radius: 4px;
+            }
+            .slide-content {
+                padding: 4px;
+                font-size: 0.7rem;
+            }
+            .footer-content {
+                gap: 2px;
+            }
+            .footer-column {
+                padding: 0 1vw;
+            }
+            footer {
+                padding: 8px 1vw 4px;
+            }
+            .copyright {
+                font-size: 0.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                gap: 4px;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+                font-size: 0.7rem;
+                padding: 0.4rem 0.7rem;
+            }
+            .hero-image {
+                margin-top: 8px;
+                max-width: 99vw;
+                width: 100%;
+                height: auto;
+                max-height: 18vh;
+            }
+            .feature-card, .service-card {
+                padding: 5px 2px;
+            }
+            .inspiration-text {
+                padding: 2px;
+            }
+            .section {
+                padding: 8px 0.5vw;
+            }
+            .section-title h2 {
+                font-size: 0.7rem;
+            }
+            .section-title p {
+                font-size: 0.6rem;
+            }
+            .activities-cta {
+                padding: 2px 0;
+            }
+            .footer-content {
+                gap: 1px;
+            }
+            .footer-column {
+                padding: 0 0.5vw;
+            }
+            footer {
+                padding: 4px 0.5vw 2px;
+            }
+            .copyright {
+                font-size: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-users"></i>
+                <span>Anruf Sourcing</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#inspiration">Inspiration</a></li>
+                <li><a href="#services">Services</a></li>
+            </ul>
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Nice To Meet You! </h1>
+            <p>We are a corporate Training and Consulting Company.</p>
+            <p> We specialize in training and Human Capital Development, <br>for both management and technical skills.</p>
+            
+            <div class="hero-btns">
+                <a href="#activities" class="btn btn-primary">
+                    <i class="fas fa-play"></i> Explore Activities
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <i class="fas fa-phone-alt"></i> Contact Us
+                </a>
+            </div>
+        </div>
+        <img src="anruf pik 4.jpg" alt="Team Building" class="hero-image">
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="section-title">
+            <h2>Let's work in partnership with you to:</h2>
+            <p>Understand your business and development needs, design development initiatives and deliver high impact training interventions</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Skill Matching</h3>
+                <p>Our algorithm intelligently matches team members based on complementary skills and personalities for optimal collaboration.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Performance Analytics</h3>
+                <p>Track team progress with real-time analytics and personalized feedback to identify strengths and growth areas.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3>Gamified Challenges</h3>
+                <p>Engage your team with interactive challenges that make professional development fun and rewarding.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Remote Integration</h3>
+                <p>Seamlessly connect in-office and remote team members with our virtual collaboration tools.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Innovation Boosters</h3>
+                <p>Stimulate creativity with activities designed to break routine thinking patterns and spark new ideas.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>Recognition System</h3>
+                <p>Celebrate achievements with our peer recognition features that highlight individual and team successes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Slider -->
+    <section class="section activities" id="activities">
+        <div class="section-title">
+            <h2>Team Building Activities</h2>
+            <p>Explore our signature experiences designed to strengthen collaboration, creativity, and problem-solving in your team.</p>
+        </div>
+
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <!-- Slide 1: Escape Room Challenge -->
+                <div class="slide">
+                    <img src="anruf pik 1.jpg" alt="Escape Room Challenge">
+                    <div class="slide-content">
+                        <h3>Escape Room Challenge</h3>
+                        <p>Teams race against time to solve puzzles and escape a themed room, enhancing problem-solving, communication, and teamwork under pressure.</p>
+                        <div class="slide-features">
+                            <span class="feature-tag">60-min sessions</span>
+                            <span class="feature-tag">4-8 players</span>
+                            <span class="feature-tag">3 difficulty levels</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Innovation Workshop -->
+                <div class="slide">
+                    <img src="anruf pik 2.jpg" alt="Innovation Workshop">
+                    <div class="slide-content">
+                        <h3>Innovation Workshop</h3>
+                        <p>Structured brainstorming sessions to foster creativity, strategic thinking, and breakthrough solutions for business challenges.</p>
+                        <div class="slide-features">
+                            <span class="feature-tag">Expert facilitators</span>
+                            <span class="feature-tag">Customizable themes</span>
+                            <span class="feature-tag">Ideal for startups & corporates</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Business Re-engineering & Process Improvement -->
+                <div class="slide">
+                    <img src="anruf pik 3.jpg" alt="Business Re-engineering">
+                    <div class="slide-content">
+                        <h3>Business Re-engineering & Process Improvement</h3>
+                        <p>Learn to diagnose inefficiencies, redesign workflows, and implement lean methodologies for organizational excellence.</p>
+                        <div class="slide-features">
+                            <span class="feature-tag">Case-study driven</span>
+                            <span class="feature-tag">Data-driven strategies</span>
+                            <span class="feature-tag">ROI-focused</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Slide 4 (Optional New Addition) -->
+                <div class="slide">
+                    <img src="anruf pik 4.jpg" alt="Leadership Simulation">
+                    <div class="slide-content">
+                        <h3>Leadership Simulation</h3>
+                        <p>Immersive scenarios to develop decision-making, conflict resolution, and adaptive leadership skills.</p>
+                        <div class="slide-features">
+                            <span class="feature-tag">Real-world simulations</span>
+                            <span class="feature-tag">360° feedback</span>
+                            <span class="feature-tag">Suitable for managers</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Navigation Dots -->
+            <div class="slider-nav">
+                <div class="slider-dot active" data-index="0"></div>
+                <div class="slider-dot" data-index="1"></div>
+                <div class="slider-dot" data-index="2"></div>
+                <div class="slider-dot" data-index="3"></div>
+            </div>
+        </div>
+
+        <!-- Additional Call-to-Action Section -->
+        <div class="activities-cta">
+            <p><strong>Need a custom program?</strong> We tailor activities to your team's goals.</p>
+            <a href="#contact" class="btn btn-outline">Get a Custom Quote</a>
+        </div>
+    </section>
+
+    <section class="section services" id="services">
+        <div class="section-title light">
+            <h2>Our Services</h2>
+            <p>Custom solutions tailored to your team's unique needs and goals</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Training and Management Performance</h3>
+                <p>Invest in your people's development. We design outstanding training programs, track performance metrics, and empower growth within your organisation</p>
+                <a href="#" class="service-link contact-trigger">
+                    Get Started <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3>Organizational and Culture Assessment</h3>
+                <p>Understand your workspace dynamics. We evaluate your culture, identify strengths and weaknesses, and recommend strategies for a more positive environment</p>
+                <a href="#" class="service-link contact-trigger">
+                    Get Started <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Compliance and Risk Management</h3>
+                <p>Navigate complex regulations with confidence. We help you mitigate risk, maintain compliance, and protect your business from legal pitfalls</p>
+                <a href="#" class="service-link contact-trigger">
+                    Get Started <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+               
+New chat
+
+                <h3>Mergers and Acquisitions</h3>
+                <p>Navigate complex transactions with HR expertise. We support you in integrating teams, managing cultural differences for successful outcomes</p>
+                <a href="#" class="service-link contact-trigger">
+                    Get Started <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-calculator"></i> <!-- Payroll icon -->
+                </div>
+                <h3>Payroll Administration</h3>
+                <p>Streamline payroll with accurate and timely processing, freeing you to focus on core business. We handle taxes, deductions and compliance.</p>
+                <a href="#" class="service-link contact-trigger">
+                    Get Started <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i> <!-- HR Tech icon -->
+                </div>
+                <h3>HR Tech Implementations</h3>
+                <p>Leverage technology to streamline HR processes. We help you choose the right HR software, set it up seamlessly and optimize its use.</p>
+                <a href="#" class="service-link contact-trigger">
+                    Get Started <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i> <!-- Insights icon -->
+                </div>
+                <h3>Strategic Insights</h3>
+                <p>Gain data-driven insights to inform HR decisions. We analyze your HR data, identify trends, and provide actionable recommendations.</p>
+                <a href="#" class="service-link contact-trigger">
+                    Get Started <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-search-plus"></i> <!-- Recruitment icon -->
+                </div>
+                <h3>Talent Acquisition & Recruitment</h3>
+                <p>Find the perfect fit for your team. We source top talent, screen candidates and manage the hiring process, saving you time and resources.</p>
+                <a href="#" class="service-link contact-trigger">
+                    Get Started <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-exchange-alt"></i> <!-- Change icon -->
+                </div>
+                <h3>Change Management</h3>
+                <p>Guide your team through transitions smoothly. We develop effective strategies to minimize disruption and ensure employee buy-in.</p>
+                <a href="#" class="service-link contact-trigger">
+                    Get Started <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-peace"></i> <!-- Conflict icon -->
+                </div>
+                <h3>Conflict Management</h3>
+                <p>Resolve workplace disputes effectively. We offer mediation and conflict resolution services to create a harmonious working environment.</p>
+                <a href="#" class="service-link contact-trigger">
+                    Get Started <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+<section class="section" id="inspiration">
+        <div class="section-title">
+            <h2>Be Inspired</h2>
+            <p>Exploring Unique Working Solutions for Every Company</p>
+        </div>
+        <div class="inspiration-spotlight">
+            <div class="inspiration-image">
+                <img src="Vusi Thembekwayo.jpg" alt="Vusi Thembekwayo">
+                <div class="inspiration-quote">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"It's not the size of the mountain, you just lack the courage to make the climb."</p>
+                    <p>"Vusi Thembekwayo"</p>
+                </div>
+            </div>
+            <div class="inspiration-text">
+            
+                <p> We believe every team has the potential to achieve greatness - they just need the right tools, training, and inspiration to make the climb.</p>
+                <p>Like scaling a mountain, team development requires preparation, the right equipment (our training programs), and expert guides (our facilitators). The journey may seem daunting at first, but with each step, your team will grow stronger and more capable.</p>
+                <p>At Anruf Sourcing, we provide the roadmap and support system to help your team conquer their business challenges and reach new heights of performance and collaboration.</p>
+
+    </section>
+
+   
+    <!-- Contact Prompt Modal -->
+    <div class="contact-prompt" id="contactPrompt">
+        <div class="prompt-box">
+            <span class="close-prompt">&times;</span>
+            <h3>Let's Build Your Dream Team</h3>
+            <p>Our team building specialists are ready to create a customized program for your organization. Contact us today to discuss your needs and get a personalized proposal.</p>
+            <div class="prompt-btns">
+                <a href="tel:+256782029464" class="btn btn-primary">
+                    <i class="fas fa-phone-alt"></i> Call Now (+256782029464)
+                </a>
+                <a href="tel:+256744634895" class="btn btn-primary">
+                    <i class="fas fa-phone-alt"></i> Call Now (+256744634895)
+                </a>
+                <a href="mailto:info@anrufsourcing.com" class="btn btn-outline">
+                    <i class="fas fa-envelope"></i> Email Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Anruf</h3>
+                <p>We're revolutionizing team building through innovative technology and research-backed methodologies that create lasting connections and measurable results.</p>
+                <div class="social-links">
+    <a href="https://www.facebook.com/yourpage" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://twitter.com/yourhandle" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.linkedin.com/company/yourcompany" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://www.instagram.com/yourprofile" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
+                    <li><a href="#activities"><i class="fas fa-chevron-right"></i> Activities</a></li>
+                    <li><a href="#inspiration"><i class="fas fa-chevron-right"></i> Inspiration</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Kiwafu Road, Muyenga</a></li>
+                    <li><a href="tel:+256782029464"><i class="fas fa-phone-alt"></i> +256782029464</a></li>
+                    <li><a href="tel:+256744634895"><i class="fas fa-phone-alt"></i> +256744634895</a></li>
+                    <li><a href="mailto:info@anrufsourcing.com"><i class="fas fa-envelope"></i> info@anrufsourcing.com</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9AM - 5PM</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Anruf Sourcing. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Preloader
+            window.addEventListener('load', () => {
+                const preloader = document.querySelector('.preloader');
+                preloader.classList.add('fade-out');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            });
+
+            function adjustLayout() {
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth < 480) {
+    document.body.style.fontSize = "14px";
+    document.body.style.padding = "10px";
+  } else if (screenWidth < 768) {
+    document.body.style.fontSize = "16px";
+    document.body.style.padding = "15px";
+  } else {
+    document.body.style.fontSize = "18px";
+    document.body.style.padding = "20px";
+  }
+}
+
+window.addEventListener("resize", adjustLayout);
+window.addEventListener("load", adjustLayout);
+
+
+
+function resizeCards() {
+  const cards = document.querySelectorAll(".card");
+  const smallScreen = window.innerWidth < 600;
+
+  cards.forEach(card => {
+    card.style.width = smallScreen ? "100%" : "45%";
+    card.style.margin = smallScreen ? "10px 0" : "10px";
+  });
+}
+
+window.addEventListener("resize", resizeCards);
+window.addEventListener("load", resizeCards);
+
+
+            // Mobile Navigation
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.innerHTML = navLinks.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+
+            // Header scroll effect
+            const header = document.getElementById('header');
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    // Header scroll effect
+                    if (window.scrollY > 100) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                    // Animate elements
+                    animateOnScroll();
+                }, 100);
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Activities Slider
+            const slider = document.getElementById('slider');
+            const dots = document.querySelectorAll('.slider-dot');
+            let currentSlide = 0;
+            const slideCount = document.querySelectorAll('.slide').length;
+            let slideInterval = null;
+
+            function showSlide(index) {
+                if (index < 0) index = slideCount - 1;
+                if (index >= slideCount) index = 0;
+                currentSlide = index;
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentSlide);
+                });
+            }
+
+            // Dot navigation
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const slideIndex = parseInt(dot.getAttribute('data-index'));
+                    showSlide(slideIndex);
+                    resetInterval();
+                });
+            });
+
+            function startInterval() {
+                if (slideInterval) clearInterval(slideInterval);
+                slideInterval = setInterval(() => {
+                    showSlide(currentSlide + 1);
+                }, 5000);
+            }
+
+            function resetInterval() {
+                if (slideInterval) clearInterval(slideInterval);
+                startInterval();
+            }
+
+            showSlide(0);
+            startInterval();
+
+            // Pause on hover
+            slider.addEventListener('mouseenter', () => {
+                if (slideInterval) clearInterval(slideInterval);
+            });
+            slider.addEventListener('mouseleave', () => {
+                startInterval();
+            });
+
+            // Contact Prompt
+            const contactTriggers = document.querySelectorAll('.contact-trigger');
+            const contactPrompt = document.getElementById('contactPrompt');
+            const closePrompt = document.querySelector('.close-prompt');
+
+            contactTriggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    contactPrompt.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            closePrompt.addEventListener('click', () => {
+                contactPrompt.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close prompt when clicking outside
+            contactPrompt.addEventListener('click', (e) => {
+                if (e.target === contactPrompt) {
+                    contactPrompt.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Animate elements on scroll
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.feature-card, .inspiration-spotlight, .service-card');
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+
+            // Set initial state for animated elements
+            document.querySelectorAll('.feature-card, .inspiration-spotlight, .service-card').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+
+            window.addEventListener('scroll', animateOnScroll);
+            window.addEventListener('load', animateOnScroll);
+        });
+    </script>
+</body>
+</html>
